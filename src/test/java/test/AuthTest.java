@@ -17,10 +17,8 @@ public class AuthTest {
     void setup() {
         open("http://localhost:9999");
     }
-
     private void open(String url) {
     }
-
     // позитивный тест
     @Test
     @DisplayName("Should successfulle login aith active registred user")
