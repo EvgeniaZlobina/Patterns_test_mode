@@ -15,10 +15,7 @@ import static java.nio.channels.SocketChannel.open;
 public class AuthTest {
     @BeforeEach
     void setup() {
-        open("http://localhost:9999");
-    }
-    private void open(String url) {
-    }
+        open("http://localhost:9999");}
     // позитивный тест
     @Test
     @DisplayName("Should successfulle login aith active registred user")
