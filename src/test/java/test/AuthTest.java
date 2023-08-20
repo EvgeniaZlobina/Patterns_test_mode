@@ -6,11 +6,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static date.DateGenerator.Registration.getRegistredUser;
 import static date.DateGenerator.Registration.getUser;
 import static date.DateGenerator.getRandomLogin;
 import static date.DateGenerator.getRandomPassword;
-import static java.nio.channels.SocketChannel.open;
+
 
 public class AuthTest {
     @BeforeEach
@@ -22,9 +23,9 @@ public class AuthTest {
     void sholdSuccessfullloginifRegistredActiveUser() {
         var registredUser = getRegistredUser("active");
         $("[data-test-id='login'] input").setValue(registredUser.getLogin());
-        $("[data-test-id='passowrd'] input").setValue(registredUser.getPassword());
+        $("[data-test-id='password'] input").setValue(registredUser.getPassword());
         $("button.button").click();
-        $("h2").shouldHave(Condition.exactText("Личный кабинет")).shouldBe(Condition.visible);
+        $("h2").shouldHave(Condition.exactText("Личный кабинет!")).shouldBe(Condition.visible);
     }
 
     //негативный тест. Пользователь не зарегистирован
@@ -33,9 +34,9 @@ public class AuthTest {
     void shouldgeterrornotregistreduser() {
         var notregistredUser = getUser("active");
         $("[data-test-id='login'] input").setValue(notregistredUser.getLogin());
-        $("[data-test-id='passowrd'] input").setValue(notregistredUser.getPassword());
+        $("[data-test-id='password'] input").setValue(notregistredUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification']. motification__comtent")
+        $("[data-test-id='error-notification']. notification__content")
                 .shouldHave(Condition.exactText("Ошибка! Неверно указан логин или пароль")).shouldBe(Condition.visible);
     }
 
@@ -45,9 +46,9 @@ public class AuthTest {
     void shoulderrorifblockeduser() {
         var blockedUser = getRegistredUser("blocked");
         $("[data-test-id='login'] input").setValue(blockedUser.getLogin());
-        $("[data-test-id='passowrd'] input").setValue(blockedUser.getPassword());
+        $("[data-test-id='password'] input").setValue(blockedUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification']. motification__comtent")
+        $("[data-test-id='error-notification']. notification__content")
                 .shouldHave(Condition.exactText("Ошибка! Пользователь заблокирован")).shouldBe(Condition.visible);
     }
 
@@ -58,9 +59,9 @@ public class AuthTest {
         var registredUser = getRegistredUser("active");
         var wrongLogin = getRandomLogin();
         $("[data-test-id='login'] input").setValue(wrongLogin);
-        $("[data-test-id='passowrd'] input").setValue(registredUser.getPassword());
+        $("[data-test-id='password'] input").setValue(registredUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification']. motification__comtent")
+        $("[data-test-id='error-notification']. notification__content")
                 .shouldHave(Condition.exactText("Ошибка! Неверно указан логин или пароль")).shouldBe(Condition.visible);
     }
 
@@ -71,11 +72,10 @@ public class AuthTest {
         var registredUser = getRegistredUser("active");
         var wrongpassword = getRandomPassword();
         $("[data-test-id='login'] input").setValue(registredUser.getLogin());
-        $("[data-test-id='passowrd'] input").setValue(wrongpassword);
+        $("[data-test-id='password'] input").setValue(wrongpassword);
         $("button.button").click();
-        $("[data-test-id='error-notification']. motification__comtent")
+        $("[data-test-id='error-notification']. notification__content")
                 .shouldHave(Condition.exactText("Ошибка! Неверно указан логин или пароль")).shouldBe(Condition.visible);
     }
-
 }
 
