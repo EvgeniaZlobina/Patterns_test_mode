@@ -25,7 +25,7 @@ public class AuthTest {
         $("[data-test-id='login'] input").setValue(registredUser.getLogin());
         $("[data-test-id='password'] input").setValue(registredUser.getPassword());
         $("button.button").click();
-        $("h2").shouldHave(Condition.exactText("Личный кабинет!")).shouldBe(Condition.visible);
+        $("h2").shouldHave(Condition.exactText("Личный кабинет")).shouldBe(Condition.visible);
     }
 
     //негативный тест. Пользователь не зарегистирован
