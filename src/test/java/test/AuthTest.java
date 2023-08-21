@@ -38,7 +38,7 @@ public class AuthTest {
         $("[data-test-id='login'] input").setValue(notregistredUser.getLogin());
         $("[data-test-id='password'] input").setValue(notregistredUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification']. notification__content")
+        $("[data-test-id='error-notification'] .notification__content")
                 .shouldHave(Condition.exactText("Ошибка! Неверно указан логин или пароль")).shouldBe(Condition.visible);
     }
 
@@ -50,7 +50,7 @@ public class AuthTest {
         $("[data-test-id='login'] input").setValue(blockedUser.getLogin());
         $("[data-test-id='password'] input").setValue(blockedUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification']. notification__content")
+        $("[data-test-id='error-notification'] .notification__content")
                 .shouldHave(Condition.exactText("Ошибка! Пользователь заблокирован")).shouldBe(Condition.visible);
     }
 
@@ -63,7 +63,7 @@ public class AuthTest {
         $("[data-test-id='login'] input").setValue(wrongLogin);
         $("[data-test-id='password'] input").setValue(registredUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification']. notification__content")
+        $("[data-test-id='error-notification'] .notification__content")
                 .shouldHave(Condition.exactText("Ошибка! Неверно указан логин или пароль")).shouldBe(Condition.visible);
     }
 
@@ -76,7 +76,7 @@ public class AuthTest {
         $("[data-test-id='login'] input").setValue(registredUser.getLogin());
         $("[data-test-id='password'] input").setValue(wrongpassword);
         $("button.button").click();
-        $("[data-test-id='error-notification']. notification__content")
+        $("[data-test-id='error-notification'] .notification__content")
                 .shouldHave(Condition.exactText("Ошибка! Неверно указан логин или пароль")).shouldBe(Condition.visible);
     }
 }
