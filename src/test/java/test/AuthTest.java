@@ -16,7 +16,9 @@ import static date.DateGenerator.getRandomPassword;
 public class AuthTest {
     @BeforeEach
     void setup() {
-        open("http://localhost:9999");}
+        open("http://localhost:9999");
+    }
+
     // позитивный тест
     @Test
     @DisplayName("Should successfulle login aith active registred user")
